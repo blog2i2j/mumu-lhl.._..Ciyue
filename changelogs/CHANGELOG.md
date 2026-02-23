@@ -1,17 +1,25 @@
 ## Bug Fixes
 
-- **(Android)** fix TTS error during initialization - ([cbfeb7b](https://github.com/cocogitto/cocogitto/commit/cbfeb7b261d5b7a931e8aba01869aad6839eba32)) - Mumulhl
-- **(ci)** fix analyse error - ([d8f7df0](https://github.com/cocogitto/cocogitto/commit/d8f7df0db03347cce61b7877ee9d43bb74ec91fd)) - Mumulhl
-- **(ci)** fix linux - ([5abf14f](https://github.com/cocogitto/cocogitto/commit/5abf14fa7c18f553e53e17b47ee8e85e83dbae18)) - Mumulhl
-- CI - ([60aff9f](https://github.com/cocogitto/cocogitto/commit/60aff9f151f3566e5616319674e11325b095f973)) - Mumulhl
-- prevent multiple app instances when receiving text lookup intents - ([20195a7](https://github.com/cocogitto/cocogitto/commit/20195a73e1c72f7cb3c83ac3e6b23321744f3595)) - Donald H.
+- **(android)** close dictionary import loading dialog when no mdx files are found - ([f2cb2c2](https://github.com/cocogitto/cocogitto/commit/f2cb2c2b2cbb20f9105bd07d8b672dae5f74a291)) - Mumulhl
+- **(android)** webview on floating window - ([0009604](https://github.com/cocogitto/cocogitto/commit/00096041db4a8abd530e8049c2317a5c7a9d1551)) - Mumulhl
+- resolve search hang and Linux WebView issues - ([050010b](https://github.com/cocogitto/cocogitto/commit/050010b285f6cb0673b64da1dabc1c46ef6d8a0d)) - Mumulhl
+- resolve PROCESS_TEXT issue where repeated searches failed to update - ([d507f5c](https://github.com/cocogitto/cocogitto/commit/d507f5c24653f2901c97cb4a387d6d38a8910e42)) - Mumulhl
 
 ## Features
 
-- **(settings)** add dynamic color toggle and advanced theme color picker - ([ed3b8a8](https://github.com/cocogitto/cocogitto/commit/ed3b8a84882c6155189e1d96faaed3def8b889fa)) - Mumulhl
-- **(translation)** translated using Weblate (French) - ([09b7645](https://github.com/cocogitto/cocogitto/commit/09b7645718c5b550d4ca44298762d701f9925311)) - SBS1313
+- **(theme)** add pure black AMOLED dark mode toggle - ([65ecb53](https://github.com/cocogitto/cocogitto/commit/65ecb531ff0ed6d15e52570f704cace4c2277b91)) - Mumulhl
+- internationalize tray menu labels - ([88d1b23](https://github.com/cocogitto/cocogitto/commit/88d1b238916be64c5ea7491dfd7aedd0de2930e7)) - Mumulhl
+- notice users when no dictionaries are found - ([7de85a4](https://github.com/cocogitto/cocogitto/commit/7de85a4b05613948f1997524bd037d13efd3e34f)) - Mumulhl
+
+## Miscellaneous Chores
+
+- **(release)** disable msix - ([7e98509](https://github.com/cocogitto/cocogitto/commit/7e98509fc92d812fb4ed5760414c48d8fd4d1aeb)) - Mumulhl
+- remove fastforge - ([4c58120](https://github.com/cocogitto/cocogitto/commit/4c58120f5b7aeb4ea90f3e9ce3c0225480489793)) - Mumulhl
 
 ## Refactoring
 
-- **(settings)** streamline theme seed presets and annotate color names - ([9de79cc](https://github.com/cocogitto/cocogitto/commit/9de79ccf9c43baf9fb02a1e27c3e06298ff3746e)) - Mumulhl
+- **(settings)** audio settings are not new - ([fc5b896](https://github.com/cocogitto/cocogitto/commit/fc5b89683e1088c27066992e520e434dd3f91528)) - Mumulhl
+- **(ui)** refactor appearance settings ui - ([b56118d](https://github.com/cocogitto/cocogitto/commit/b56118d43164d66a6c9108e357d7225062d90d3d)) - Mumulhl
+- **(ui)** manage storage should be shown when is non-full flavor - ([4ebd62a](https://github.com/cocogitto/cocogitto/commit/4ebd62a39dad2675231f4cb308ff35b0e0425d4b)) - Mumulhl
+- refactor webview - ([4db32ee](https://github.com/cocogitto/cocogitto/commit/4db32eea8c539f38f42f673354411fe5a8fc1f30)) - Mumulhl
 
