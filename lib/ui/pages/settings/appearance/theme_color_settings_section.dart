@@ -6,19 +6,23 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 
 class ThemeColorSettingsState {
   final bool dynamicColorEnabled;
+  final bool pureBlackDarkMode;
   final Color seedColor;
 
   const ThemeColorSettingsState({
     required this.dynamicColorEnabled,
+    required this.pureBlackDarkMode,
     required this.seedColor,
   });
 
   ThemeColorSettingsState copyWith({
     bool? dynamicColorEnabled,
+    bool? pureBlackDarkMode,
     Color? seedColor,
   }) {
     return ThemeColorSettingsState(
       dynamicColorEnabled: dynamicColorEnabled ?? this.dynamicColorEnabled,
+      pureBlackDarkMode: pureBlackDarkMode ?? this.pureBlackDarkMode,
       seedColor: seedColor ?? this.seedColor,
     );
   }
@@ -29,6 +33,7 @@ class ThemeColorSettingsNotifier extends Notifier<ThemeColorSettingsState> {
   ThemeColorSettingsState build() {
     return ThemeColorSettingsState(
       dynamicColorEnabled: settings.enableDynamicColor,
+      pureBlackDarkMode: settings.pureBlackDarkMode,
       seedColor: settings.themeSeedColor,
     );
   }
@@ -39,6 +44,10 @@ class ThemeColorSettingsNotifier extends Notifier<ThemeColorSettingsState> {
 
   void setSeedColor(Color color) {
     state = state.copyWith(seedColor: color);
+  }
+
+  void setPureBlackDarkMode(bool value) {
+    state = state.copyWith(pureBlackDarkMode: value);
   }
 }
 
@@ -57,6 +66,7 @@ class ThemeColorSettingsSection extends ConsumerWidget {
     final locale = AppLocalizations.of(context)!;
     final themeSettings = ref.watch(themeColorSettingsProvider);
     final dynamicColorEnabled = themeSettings.dynamicColorEnabled;
+    final pureBlackDarkMode = themeSettings.pureBlackDarkMode;
     final themeSeedColor = themeSettings.seedColor;
 
     return Column(
@@ -71,6 +81,19 @@ class ThemeColorSettingsSection extends ConsumerWidget {
                 .read(themeColorSettingsProvider.notifier)
                 .setDynamicColorEnabled(value);
             await settings.setEnableDynamicColor(value);
+            refreshAll();
+          },
+        ),
+        SwitchListTile(
+          secondary: const Icon(Icons.contrast),
+          title: Text(locale.pureBlackDarkMode),
+          subtitle: Text(locale.pureBlackDarkModeDescription),
+          value: pureBlackDarkMode,
+          onChanged: (value) async {
+            ref
+                .read(themeColorSettingsProvider.notifier)
+                .setPureBlackDarkMode(value);
+            await settings.setPureBlackDarkMode(value);
             refreshAll();
           },
         ),

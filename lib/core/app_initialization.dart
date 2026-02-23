@@ -232,6 +232,7 @@ Future<void> initPrefs() async {
     "language",
     "themeMode",
     "enableDynamicColor",
+    "pureBlackDarkMode",
     "themeSeedColor",
     "tagsOrder",
     "secureScreen",
