@@ -102,6 +102,24 @@ class Ciyue extends StatefulWidget {
 }
 
 class _CiyueState extends State<Ciyue> with TrayListener {
+  ColorScheme _applyPureBlackDarkScheme(ColorScheme colorScheme) {
+    if (colorScheme.brightness != Brightness.dark) {
+      return colorScheme;
+    }
+
+    return colorScheme.copyWith(
+      surface: Colors.black,
+      surfaceDim: Colors.black,
+      surfaceBright: Colors.black,
+      surfaceContainerLowest: Colors.black,
+      surfaceContainerLow: Colors.black,
+      surfaceContainer: Colors.black,
+      surfaceContainerHigh: Colors.black,
+      surfaceContainerHighest: Colors.black,
+      surfaceTint: Colors.transparent,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.isFloatingWindow) {
@@ -159,15 +177,27 @@ class _CiyueState extends State<Ciyue> with TrayListener {
 
   Widget buildMaterialApp(ColorScheme? lightColorScheme,
       ColorScheme? darkColorScheme, Locale? locale) {
+    final ColorScheme resolvedDarkColorScheme;
+    if (darkColorScheme != null) {
+      resolvedDarkColorScheme = darkColorScheme;
+    } else {
+      resolvedDarkColorScheme = ColorScheme.fromSeed(
+          seedColor: Colors.blue, brightness: Brightness.dark);
+    }
+
+    final ColorScheme darkScheme;
+    if (settings.pureBlackDarkMode) {
+      darkScheme = _applyPureBlackDarkScheme(resolvedDarkColorScheme);
+    } else {
+      darkScheme = resolvedDarkColorScheme;
+    }
+
     return SafeArea(
       top: false,
       child: MaterialApp.router(
         title: "Ciyue",
         theme: ThemeData(colorScheme: lightColorScheme),
-        darkTheme: ThemeData(
-            colorScheme: darkColorScheme ??
-                ColorScheme.fromSeed(
-                    seedColor: Colors.blue, brightness: Brightness.dark)),
+        darkTheme: ThemeData(colorScheme: darkScheme),
         themeMode: settings.themeMode,
         locale: locale,
         localizationsDelegates: [

@@ -17,6 +17,7 @@ class Settings {
 
   late ThemeMode themeMode;
   late bool enableDynamicColor;
+  late bool pureBlackDarkMode;
   late Color themeSeedColor;
   String? language;
   late bool searchBarInAppBar;
@@ -69,6 +70,7 @@ class Settings {
 
     language = prefs.getString("language") ?? "system";
     enableDynamicColor = prefs.getBool("enableDynamicColor") ?? true;
+    pureBlackDarkMode = prefs.getBool("pureBlackDarkMode") ?? false;
     final int? themeSeedColorValue = prefs.getInt("themeSeedColor");
     themeSeedColor = Color(themeSeedColorValue ?? Colors.blue.toARGB32());
     searchBarInAppBar = prefs.getBool("searchBarInAppBar") ?? true;
@@ -171,6 +173,11 @@ class Settings {
   Future<void> setThemeSeedColor(Color color) async {
     themeSeedColor = color;
     await prefs.setInt("themeSeedColor", color.toARGB32());
+  }
+
+  Future<void> setPureBlackDarkMode(bool value) async {
+    pureBlackDarkMode = value;
+    await prefs.setBool("pureBlackDarkMode", value);
   }
 
   Future<void> setTabBarPosition(TabBarPosition position) async {
